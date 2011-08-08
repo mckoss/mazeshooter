@@ -31,56 +31,31 @@ google.load('payments', '1.0', {
 <div class="page">
 
   <h1><script>document.write(document.title);</script></h1>
+  
+  <div id="world" class="world"></div>
 
-<!--
-   Standard Google Analytics tracking.  This can be removed from your own app,
-   or replaced with your own account id.
-  -->
+  <button class="buy-button" id="buybutton1" name="buy" type="button" onClick="msMain.buyBullets()">Bucket-o-Bullets</button>
 
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-2072869-7']);
-  _gaq.push(['_trackPageview']);
+  <!-- start instrucitons -->
+  <div class="instructions">
+    <p>Welcome to MAZE SHOOTER a 2D multi-player overhead shooter.</p>
+    </br>
+    <p>In this world you will encounter the following elements.</p>
+    </br>
+    <p><strong>Blocks</strong>: A breakable world element. Break these using the &#8220;shoot&#8221; or &#8220;punch&#8221; commands. Breaking blocks will earn you more bullets. You can purchase more bullets here <a ref="onClick="msMain.buyBullets()"">get bullets</a>.</p>
+    <p><strong>Walls</strong>: Represents the edge of the playable map. You cannot destroy a wall</p>
+    <p><strong>Rival Player</strong>: Represents another player sharing the map. You may attack rival players. Get them before they get you!</p>
+    <p><strong>Monsters</strong>: Represents an enemy that may attack you.</p>
+    </br>
+    </br>
+    <p>Here is how to play:</p>
+    </br>
+    <p><em>Movement</em> - use the arrow keys up, down, right, left</p>
+    <p><em>Shoot </em>- use the &#8220;d&#8221; key or &#8220;space&#8221;</p>
+    <p><em>Punch</em> - use the &#8220;f&#8221; key</p>
+  </div> <!-- end instructions -->
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
-        '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
-<div id="world" class="world"></div>
-
-
-<button class="buy-button"
-  id="buybutton1" name="buy" type="button"
-  onClick="msMain.buyBullets()">
-  Bucket-o-Bullets
-</button>
-
-<div class="instructions">
-<p>Welcome to MAZE SHOOTER a 2D multi-player overhead shooter.</p>
-</br>
-<p>In this world you will encounter the following elements.</p>
-</br>
-<p><strong>Blocks</strong>: A breakable world element. Break these using the &#8220;shoot&#8221; or &#8220;punch&#8221; commands. Breaking blocks will earn you more bullets. You can purchase more bullets here <a ref="">get bullets</a>.</p>
-<p><strong>Walls</strong>: Represents the edge of the playable map. You cannot destroy a wall</p>
-<p><strong>Rival Player</strong>: Represents another player sharing the map. You may attack rival players. Get them before they get you!</p>
-<p><strong>Monsters</strong>: Represents an enemy that may attack you.</p>
-</br>
-</br>
-<p>Here is how to play:</p>
-</ br>
-<p><em>Movement</em> - use the arrow keys up, down, right, left</p>
-<p><em>Shoot </em>- use the &#8220;d&#8221; key or &#8220;space&#8221;</p>
-<p><em>Punch</em> - use the &#8220;f&#8221; key</p>
-</div>
-
-</div> <!-- page -->
-
+</div> <!-- end page -->
 
 </body>
 </html>
