@@ -10,9 +10,18 @@
 <script type="text/javascript" src="/lib/beta/js/pf-client.js"></script>
 
 <script type="text/javascript" src="src/all.js"></script>
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load('payments', '1.0', {
+  'packages': ['sandbox_config']
+});
+</script>
+
 <script type="text/javascript">
   // Call the onReady function of the application when the page is loaded.
-  $(document).ready(namespace.com.pageforest.mazeshooter.main);
+  var msMain = namespace.com.pageforest.mazeshooter;
+  $(document).ready(msMain.main);
 </script>
 
 </head>
@@ -41,9 +50,16 @@
   })();
 </script>
 
-</div>
+
 
 <div id="world" class="world"></div>
+
+
+<button class="buy-button"
+  id="buybutton1" name="buy" type="button"
+  onClick="msMain.buyBullets()">
+  Bucket-o-Bullets
+</button>
 
 <div class="instructions">
 <p>Welcome to MAZE SHOOTER a 2D multi-player overhead shooter.</p>
@@ -66,8 +82,10 @@
 <p><em>Shoot </em>- use the “d” key or “space”</p>
 </br>
 <p><em>Punch</em> - use the “f” key</p>
-
 </div>
+
+</div> <!-- page -->
+
 
 </body>
 </html>

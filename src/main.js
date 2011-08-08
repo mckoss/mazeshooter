@@ -4,7 +4,8 @@ var ms = require('com.pageforest.mazeshooter.abstract');
 exports.extend({
     'main': main,
     'drawWorld': drawWorld,
-    'onUpdate': onUpdate
+    'onUpdate': onUpdate,
+    'buyBullets': buyBullets
 })
 
 var client;
@@ -84,3 +85,26 @@ function drawWorld(worldArray) {
     alert("drawWorld");
 }
 
+
+function buyBullets() {
+  goog.payments.inapp.buy({
+    'jwt'     :     "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTY4MTE1NjE0MDU5N" + 
+               "Tk1NDQ0MCIsImF1ZCI6Ikdvb2dsZSIsInR5cCI6Imdvb2dsZS9" + 
+               "wYXltZW50cy9pbmFwcC9pdGVtL3YxIiwiaWF0IjoxMzEyODQ2N" + 
+               "DAwLCJleHAiOjEzMTI5MzI4MDAsInJlcXVlc3QiOnsiY3VycmV" + 
+               "uY3lDb2RlIjoiVVNEIiwicHJpY2UiOiIwLjk5IiwibmFtZSI6I" + 
+               "kJ1Y2tldC1vLUJ1bGxldHMiLCJzZWxsZXJEYXRhIjoiMTAwIiw" + 
+               "iZGVzY3JpcHRpb24iOiJMb2FkIHVwIHlvdXIgbWFnYXppbmUgZ" + 
+               "m9yIE1pbmVTaG9vdGVyIn19.lyoZZ1U6Y6BYVJpAJ8M2XEKqIk" + 
+               "G1s1lNz7HQjoi-Jp4",
+    'success' : onBulletPurchase,
+    'failure' : function () {
+        alert("Your purchase failed");
+    }
+  });
+}
+
+//Success handler
+function onBulletPurchase(purchaseAction) {
+    alert("Purchase success!");
+}
