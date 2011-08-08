@@ -366,11 +366,8 @@ var ms = require('com.pageforest.abstract');
 
 exports.extend({
     'main': main,
-<<<<<<< HEAD
-    'drawWorld': drawWorld
-=======
+    'drawWorld': drawWorld,
     'onUpdate': onUpdate
->>>>>>> 08169c278275312f9f06752d44d8aaffcb72f720
 })
 
 var client;
@@ -393,6 +390,7 @@ function main() {
     client = new clientLib.Client(app);
     client.addAppBar();
     ms.init(client, exports);
+    drawWorld();
 }
 
 // For offline - capable applications
@@ -410,22 +408,18 @@ function handleAppCache() {
     applicationCache.addEventListener('updateready', handleAppCache, false);
 }
 
-<<<<<<< HEAD
-function drawWorld(worldArray) {
-    alert("worked");
-=======
 function onUpdate() {
-
-}
-
-function drawWorld(worldArray) {
 
 }
 
 function onKeyDown() {
 
->>>>>>> 08169c278275312f9f06752d44d8aaffcb72f720
 }
+
+function drawWorld(worldArray) {
+    alert("drawWorld");
+}
+
 });
 
 /* Source: src/abstract.js */
