@@ -26,7 +26,7 @@ function init(c, userInterface) {
 }
 
 function getPlayerInfo() {
-    
+    return player;
 }
 
 // returns 15x15 array 
@@ -35,11 +35,20 @@ function getLocalRegion() {
     var x = player.x - 7;
     var y = player.y - 7;
     for (var i = 0; i < 15; i++) {
+        arr[i] = '';
         for (var j = 0; j < 15; j++) {
-            if (world[x + i][y + j]) {
+            if (x + i < 0 || y + j < 0 || x + i > 14 || y + j > 14) {
+                arr[i] += 'w';
+            } else {
+                arr[i] += world[x + i][y + j];
             }
         }
     }
+    return arr;
+}
+
+function stringHelper(str, i, ch) {
+    return str.slice(0,i) + ch + str.slice(i + 1);
 }
 
 function makeWorld() {
@@ -52,7 +61,7 @@ function makeWorld() {
             w[i][j] = 'b';
         }
     }
-    w[0][0] = 's';
+    w[0][0] = 'u';
     world = w;
 }
 
@@ -61,21 +70,53 @@ function newPlayer() {
     p.x = 0;
     p.y = 0;
     p.bullets = 0;
-    p.hp = 1;
+    p.health = 1;
+    p.dir = 2;
     player = p;
 }
 
 function punch() {
-
+    
 }
 
 function shoot() {
 
 }
 
-function move(direction) {
-    if (isValidMove(loc)) {
-        p.loc = loc;
+function move(dir) {
+    switch (dir) {
+    case 0:
+        if (p.y > 0) {
+            p.y--;
+            return true;
+        } else {
+            return false;
+        }
+        break;
+    case 1:
+        if (p.x < 99) {
+            p.y--;
+            return true;
+        } else {
+            return false;
+        }
+        break;
+    case 2:
+        if (p.y > 0) {
+            p.y--;
+            return true;
+        } else {
+            return false;
+        }
+        break;
+    case 3:
+        if (p.y > 0) {
+            p.y--;
+            return true;
+        } else {
+            return false;
+        }
+        break;
     }
     return false;
 }
