@@ -1,7 +1,10 @@
 var clientLib = require('com.pageforest.client');
+var ms = require('com.pageforest.abstract');
 
 exports.extend({
-    'main': main
+    'main': main,
+    'drawWorld': drawWorld,
+    'onUpdate': onUpdate
 })
 
 var client;
@@ -23,6 +26,7 @@ function main() {
     handleAppCache();
     client = new clientLib.Client(app);
     client.addAppBar();
+    ms.init(client, exports);
 }
 
 // For offline - capable applications
@@ -38,5 +42,17 @@ function handleAppCache() {
     }
 
     applicationCache.addEventListener('updateready', handleAppCache, false);
+}
+
+function onUpdate() {
+
+}
+
+function onKeyDown() {
+    
+}
+
+function drawWorld(worldArray) {
+    alert("drawWorld");
 }
 

@@ -1,5 +1,5 @@
 {
-  "application": "mazeshooter",
+  "application": "mazeshooter-chris",
   "cloneable": true,
   "icon": "images/icon.png",
   "owner": "mckoss",
@@ -11,5 +11,8 @@
   "tags": [],
   "title": "Maze Shooter",
   "url": "http://mazeshooter.pageforest.com/",
-  "writers": ["cwkoss", "bobbys"]
+  "writers": [
+    "cwkoss",
+    "bobbys"
+  ]
 }
