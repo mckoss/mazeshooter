@@ -40,3 +40,6 @@ function handleAppCache() {
     applicationCache.addEventListener('updateready', handleAppCache, false);
 }
 
+function drawWorld(worldArray) {
+    alert("drawWorld");
+}
