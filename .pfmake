@@ -1,0 +1,10 @@
+{
+  "files": {
+    "src/all.js": [
+      "src/namespace-plus.js",
+      { "path": "src/main.js", "namespace": "com.pageforest.mazeshooter" }
+    ]
+  },
+  "minify": false,
+  "uploadIndividualFiles": false
+}
