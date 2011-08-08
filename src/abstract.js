@@ -1,3 +1,4 @@
+var clientLib = require('com.pageforest.client');
 
 var world;
 var player;
