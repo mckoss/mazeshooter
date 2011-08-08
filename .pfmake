@@ -3,8 +3,7 @@
     "src/all.js": [
       "src/namespace-plus.js",
       { "path": "src/main.js", "namespace": "com.pageforest.mazeshooter" },
-      { "path": "src/abstract.js", "namespace": "com.pageforest.mazeshooter.abstract" },
-      { "path": "src/ui.js", "namespace": "com.pageforest.mazeshooter.ui" }
+      { "path": "src/abstract.js", "namespace": "com.pageforest.mazeshooter.abstract" }
     ]
   },
   "minify": false,
