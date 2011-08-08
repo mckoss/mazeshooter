@@ -390,7 +390,8 @@ function main() {
     client = new clientLib.Client(app);
     client.addAppBar();
     ms.init(client, exports);
-    drawWorld();
+
+    $(window).bind('keydown', onKeyDown);
 }
 
 // For offline - capable applications
@@ -409,11 +410,12 @@ function handleAppCache() {
 }
 
 function onUpdate() {
+    console.log("onUpdate");
 
 }
 
 function onKeyDown() {
-
+    console.log("keydown");
 }
 
 function drawWorld(worldArray) {
@@ -424,16 +426,15 @@ function drawWorld(worldArray) {
 
 /* Source: src/abstract.js */
 namespace.module('com.pageforest.mazeshooter.abstract', function (exports, require) {
-
-
 var world;
 var player;
 var ui;
 var client;
+var storage;
 
 exports.extend({
     'init': init,
-    'movePlayer': movePlayer,
+    'move': move,
     'world': world,
     'getPlayerInfo': getPlayerInfo,
     'getLocalRegion': getLocalRegion,
@@ -443,7 +444,9 @@ exports.extend({
 
 function init(c, userInterface) {
     client = c;
+    storage = client.storage;
     ui = userInterface;
+
 
 
     makeWorld();
@@ -456,7 +459,15 @@ function getPlayerInfo() {
 
 // returns 15x15 array
 function getLocalRegion() {
-
+    var arr = [];
+    var x = player.x - 7;
+    var y = player.y - 7;
+    for (var i = 0; i < 15; i++) {
+        for (var j = 0; j < 15; j++) {
+            if (world[x + i][y + j]) {
+            }
+        }
+    }
 }
 
 function makeWorld() {
@@ -475,7 +486,8 @@ function makeWorld() {
 
 function newPlayer() {
     var p = {};
-    p.loc = [0, 0];
+    p.x = 0;
+    p.y = 0;
     p.bullets = 0;
     p.hp = 1;
     player = p;
@@ -495,23 +507,5 @@ function move(direction) {
     }
     return false;
 }
-
-function isValidMove(loc) {
-    if (!(Math.abs(loc[0] - player.loc[0]) < 1 &&
-         Math.abs(loc[1] - player.loc[1]) < 1)) {
-        return false;
-    }
-    if (world[loc[0]][loc[1]] != 's') {
-        return false;
-    }
-    return true;
-}
-});
-
-/* Source: src/ui.js */
-namespace.module('com.pageforest.mazeshooter.ui', function (exports, require) {
-//COMMENT!!!322323
-alert("werking");
-console.log(init(10));
 });
 
