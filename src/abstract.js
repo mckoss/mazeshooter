@@ -1,23 +1,40 @@
-var clientLib = require('com.pageforest.client');
+
 
 var world;
 var player;
-
-exports.extend({
-})
-
+var ui;
+var client;
 
 exports.extend({
     'init': init,
-    'movePlayer': movePlayer
+    'movePlayer': movePlayer,
+    'world': world,
+    'getPlayerInfo': getPlayerInfo,
+    'getLocalRegion': getLocalRegion,
+    'shoot': shoot,
+    'punch': punch
 })
 
-function init(scale) {
-    makeWorld(scale);
+function init(c, userInterface) {
+    client = c;
+    ui = userInterface;
+    
+
+    makeWorld();
     newPlayer();
 }
 
-function makeWorld(scale) {
+function getPlayerInfo() {
+    
+}
+
+// returns 15x15 array 
+function getLocalRegion() {
+    
+}
+
+function makeWorld() {
+    var scale = 100;
     // 'b': block (breakable), 's': space
     var w = [];
     for (var i = 0; i < scale + 2; i++) {
@@ -38,7 +55,15 @@ function newPlayer() {
     player = p;
 }
 
-function movePlayer(loc) {
+function punch() {
+
+}
+
+function shoot() {
+
+}
+
+function move(direction) {
     if (isValidMove(loc)) {
         p.loc = loc;
     }

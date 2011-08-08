@@ -47,10 +47,10 @@ function onUpdate() {
 
 }
 
-function drawWorld(worldArray) {
-
-}
-
 function onKeyDown() {
     
+}
+
+function drawWorld(worldArray) {
+    alert("drawWorld");
 }
