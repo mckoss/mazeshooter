@@ -26,6 +26,8 @@ function main() {
     client = new clientLib.Client(app);
     client.addAppBar();
     ms.init(client, exports);
+    
+    $(window).bind('keydown', onKeyDown);
 }
 
 // For offline - capable applications
@@ -44,11 +46,12 @@ function handleAppCache() {
 }
 
 function onUpdate() {
+    console.log("onUpdate");
 
 }
 
 function onKeyDown() {
-    
+    console.log("keydown");
 }
 
 function drawWorld(worldArray) {
