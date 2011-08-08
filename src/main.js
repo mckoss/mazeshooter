@@ -1,5 +1,5 @@
 var clientLib = require('com.pageforest.client');
-var ms = require('com.pageforest.abstract');
+var ms = require('com.pageforest.mazeshooter.abstract');
 
 exports.extend({
     'main': main,
