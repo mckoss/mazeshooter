@@ -2,7 +2,8 @@
   "files": {
     "src/all.js": [
       "src/namespace-plus.js",
-      { "path": "src/main.js", "namespace": "com.pageforest.mazeshooter" }
+      { "path": "src/main.js", "namespace": "com.pageforest.mazeshooter" },
+      { "path": "src/abstract.js", "namespace": "com.pageforest.mazeshooter.abstract" }
     ]
   },
   "minify": false,

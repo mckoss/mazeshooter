@@ -1,15 +1,11 @@
-var clientLib = require('com.pageforest.client');
 
 var world;
 var player;
 
 exports.extend({
-})
-
-
-exports.extend({
     'init': init,
-    'movePlayer': movePlayer
+    'movePlayer': movePlayer,
+    'world': world
 })
 
 function init(scale) {
