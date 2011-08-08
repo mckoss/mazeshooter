@@ -4,8 +4,15 @@ var ms = require('com.pageforest.mazeshooter.abstract');
 exports.extend({
     'main': main,
     'drawWorld': drawWorld,
-    'onUpdate': onUpdate
+    'onUpdate': onUpdate,
+    'getDocid': getDocid
 })
+
+function getDocid() {
+    if (client.username) {
+        return client.username;
+    }
+}
 
 var client;
 var app = {
