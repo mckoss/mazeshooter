@@ -1,7 +1,8 @@
 var clientLib = require('com.pageforest.client');
 
 exports.extend({
-    'main': main
+    'main': main,
+    'drawWorld': drawWorld
 })
 
 var client;
@@ -41,5 +42,5 @@ function handleAppCache() {
 }
 
 function drawWorld(worldArray) {
-    alert("drawWorld");
+    alert("worked");
 }
