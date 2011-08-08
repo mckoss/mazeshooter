@@ -5,8 +5,15 @@ exports.extend({
     'main': main,
     'drawWorld': drawWorld,
     'onUpdate': onUpdate,
+    'getDocid': getDocid,
     'buyBullets': buyBullets
 })
+
+function getDocid() {
+    if (client.username) {
+        return client.username;
+    }
+}
 
 var client;
 var app = {
