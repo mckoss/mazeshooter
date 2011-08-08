@@ -36,14 +36,13 @@ function getLocalRegion() {
     var y = player.y - 7;
     for (var i = 0; i < 15; i++) {
         for (var j = 0; j < 15; j++) {
-            if (!world[x + i][y + j]) {
+            if (x + i < 0 || y + j < 0 || x + i > 14 || y + j > 14) {
                 arr[i] += 'w';
             } else {
                 arr[i] += world[x + i][y + j];
             }
         }
     }
-    arr = stringHelper(arr[7], 7, 'u');
     return arr;
 }
 
@@ -61,7 +60,7 @@ function makeWorld() {
             w[i][j] = 'b';
         }
     }
-    w[0][0] = 's';
+    w[0][0] = 'u';
     world = w;
 }
 
