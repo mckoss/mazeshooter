@@ -51,8 +51,33 @@ function onUpdate() {
 
 }
 
-function onKeyDown() {
+function onKeyDown(e) {
     console.log("keydown");
+    console.log("this keycode:" + e.keyCode);
+    switch (e.keyCode)
+    {
+    case 37: //left
+        ms.move(3);
+        break;
+    case 38: //up
+        ms.move(0);
+        break;
+    case 39: //right
+        ms.move(1);
+        break;
+    case 40: //down
+        ms.move(2);
+        break;
+    case 32: //space - shoot
+        ms.shoot();
+        break;
+    case 68: //d - shoot
+        ms.shoot();
+        break;
+    case 70: //f - punch
+        ms.punch();
+    default:
+    }        
 }
 
 function drawWorld(worldArray) {
