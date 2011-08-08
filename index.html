@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+   scratch.Pageforest.com - Sample Application
+
+   Scratch is designed to be a minimal app to demonstrate
+   how to build a simple Pageforest app.  You can make your
+   own app "from scratch" visit:
+
+       http://www.pageforest.com/apps/scratch/clone/
+  -->
+
+<title>Scratch Sample Pageforest Application</title>
+
+<link rel="icon" type="image/png" href="/images/icon.png" />
+<link rel="apple-touch-icon" href="/images/touch.png" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" type="text/css" href="/lib/beta/css/client.css" />
+<script type="text/javascript" src="/lib/beta/js/pf-client.js"></script>
+
+<script type="text/javascript" src="main.js"></script>
+
+<script type="text/javascript">
+  // Call the onReady function of the application when the page is loaded.
+  var scratch = namespace.lookup("com.pageforest.scratch");
+  $(document).ready(function () {
+    $('#blob').focus();
+    scratch.main();
+  });
+</script>
+
+</head>
+
+<body>
+
+<div class="page">
+
+  <h1><script>document.write(document.title);</script></h1>
+
+  <fieldset>
+    <legend>Getting Started</legend>
+    <p>
+      Follow these steps to get started building your own App.
+      <ol>
+        <li>Click on the Sign In link above, to create your Pageforest user account and
+          Allow Access for the Scratch application.</li>
+        <li>Change the contents of the Note field below.</li>
+        <li>Click on the Save link above to save your changes to your Pageforest document
+          library.  <i>Note that the URL address of this page has changed to indicate
+            the document id given to your saved document.</i></li>
+        <li>Reload the page (press F5) to confirm that Pageforest can reload your
+          document as you saved it.</li>
+        <li><a target="_blank" href="http://www.pageforest.com/apps/scratch/clone">Clone</a> this app, to make your
+          own modifiable copy of the source code.</li>
+        <li>Use the <a target="_blank" href="http://editor.pageforest.com">Pageforest Editor</a> to edit the
+          source code of your application.
+          <i>Alternatively, you can edit your application files on your desktop or laptop
+            computer - see more at
+            <a target="_blank" href="http://wiki.pageforest.com/#pageforest-api/pf.py">pf.py</a>.
+          </i>
+        </li>
+        <li>Read our in-depth <a target="_blank" href="http://code.google.com/p/pageforest/wiki/GettingStarted">
+            Getting Started</a> guide.</li>
+      </ol>
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Data Fields</legend>
+    <ul>
+      <li>
+        <label for="blob">Note:</label>
+        <textarea id="blob" name="blob">Type your message here.</textarea>
+      </li>
+    </ul>
+  </fieldset>
+
+  <fieldset>
+    <legend>Explore</legend>
+    <ol>
+      <li><a id="document" target="_blank">JSON data for this document</a> - Each Pageforest
+        document is saved as a JSON-formatted file.  Once saved, you can click this link
+        to examine the document format directly in your browser.
+        <i>Note that all documents are stored in http://appid.pageforest.com/docs/docid</i>
+      </li>
+      <li><a id="mydocs" target="_blank" href="http://www.pageforest.com/docs/">My Pageforest documents</a> -
+        Pageforest collects all the documents that a user has saved in his own document library.</li>
+      <li><a target="_blank" href="http://code.google.com/p/pageforest/source/browse/#hg/examples/scratch">
+          Source code</a> - View the code for this application.</li>
+    </ol>
+  </fieldset>
+
+<!--
+   Standard Google Analytics tracking.  This can be removed from your own app,
+   or replaced with your own account id.
+  -->
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2072869-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
+        '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</div> <!-- page -->
+
+</body>
+</html>
