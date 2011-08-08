@@ -405,3 +405,8 @@ function handleAppCache() {
 
 });
 
+/* Source: src/ui.js */
+namespace.module('com.pageforest.mazeshooter.ui', function (exports, require) {
+
+});
+
