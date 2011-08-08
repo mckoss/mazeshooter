@@ -65,6 +65,11 @@ function makeWorld() {
     world = w;
 }
 
+//
+function updateWorld() {
+    
+}
+
 function newPlayer() {
     var p = {};
     p.x = 0;
@@ -75,11 +80,18 @@ function newPlayer() {
     player = p;
 }
 
+// if block in front of player call break block
 function punch() {
     
 }
 
+// check if player has bullets, update player.bullets, call breakBlock
 function shoot() {
+
+}
+
+// award 10 bullets to player (5 %) award 100 bullets to player (.5%)
+function breakBlock() {
 
 }
 
