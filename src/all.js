@@ -366,6 +366,7 @@ var ms = require('com.pageforest.abstract');
 
 exports.extend({
     'main': main,
+    'drawWorld': drawWorld,
     'onUpdate': onUpdate
 })
 
@@ -420,6 +421,7 @@ function onKeyDown() {
 function drawWorld(worldArray) {
     alert("drawWorld");
 }
+
 });
 
 /* Source: src/abstract.js */
