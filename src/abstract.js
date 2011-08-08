@@ -1,23 +1,49 @@
-var clientLib = require('com.pageforest.client');
-
 var world;
 var player;
-
-exports.extend({
-})
-
+var ui;
+var client;
+var storage;
 
 exports.extend({
     'init': init,
-    'movePlayer': movePlayer
+    'move': move,
+    'world': world,
+    'getPlayerInfo': getPlayerInfo,
+    'getLocalRegion': getLocalRegion,
+    'shoot': shoot,
+    'punch': punch
 })
 
-function init(scale) {
-    makeWorld(scale);
+function init(c, userInterface) {
+    client = c;
+    storage = client.storage;
+    ui = userInterface;
+    
+    
+
+    makeWorld();
     newPlayer();
 }
 
-function makeWorld(scale) {
+function getPlayerInfo() {
+    
+}
+
+// returns 15x15 array 
+function getLocalRegion() {
+    var arr = [];
+    var x = player.x - 7;
+    var y = player.y - 7;
+    for (var i = 0; i < 15; i++) {
+        for (var j = 0; j < 15; j++) {
+            if (world[x + i][y + j]) {
+            }
+        }
+    }
+}
+
+function makeWorld() {
+    var scale = 100;
     // 'b': block (breakable), 's': space
     var w = [];
     for (var i = 0; i < scale + 2; i++) {
@@ -32,26 +58,24 @@ function makeWorld(scale) {
 
 function newPlayer() {
     var p = {};
-    p.loc = [0, 0];
+    p.x = 0;
+    p.y = 0;
     p.bullets = 0;
     p.hp = 1;
     player = p;
 }
 
-function movePlayer(loc) {
+function punch() {
+
+}
+
+function shoot() {
+
+}
+
+function move(direction) {
     if (isValidMove(loc)) {
         p.loc = loc;
     }
     return false;
-}
-
-function isValidMove(loc) {
-    if (!(Math.abs(loc[0] - player.loc[0]) < 1 &&
-         Math.abs(loc[1] - player.loc[1]) < 1)) {
-        return false;
-    }
-    if (world[loc[0]][loc[1]] != 's') {
-        return false;
-    }
-    return true;
 }
