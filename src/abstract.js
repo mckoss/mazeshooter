@@ -35,6 +35,7 @@ function getLocalRegion() {
     var x = player.x - 7;
     var y = player.y - 7;
     for (var i = 0; i < 15; i++) {
+        arr[i] = '';
         for (var j = 0; j < 15; j++) {
             if (x + i < 0 || y + j < 0 || x + i > 14 || y + j > 14) {
                 arr[i] += 'w';
@@ -82,7 +83,40 @@ function shoot() {
 
 }
 
-function move(direction) {
-
+function move(dir) {
+    switch (dir) {
+    case 0:
+        if (p.y > 0) {
+            p.y--;
+            return true;
+        } else {
+            return false;
+        }
+        break;
+    case 1:
+        if (p.x < 99) {
+            p.y--;
+            return true;
+        } else {
+            return false;
+        }
+        break;
+    case 2:
+        if (p.y > 0) {
+            p.y--;
+            return true;
+        } else {
+            return false;
+        }
+        break;
+    case 3:
+        if (p.y > 0) {
+            p.y--;
+            return true;
+        } else {
+            return false;
+        }
+        break;
+    }
     return false;
 }
