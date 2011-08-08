@@ -1,5 +1,5 @@
 {
-  "application": "scratch",
+  "application": "mazeshooter",
   "cloneable": true,
   "icon": "images/icon.png",
   "owner": "mckoss",
@@ -8,11 +8,8 @@
   ],
   "referers": [],
   "secureData": false,
-  "tags": [
-    "sample",
-    "pf:featured"
-  ],
-  "title": "Scratch",
-  "url": "http://scratch.pageforest.com/",
+  "tags": [ ],
+  "title": "Maze Shooter",
+  "url": "http://mazeshooter.pageforest.com/",
   "writers": []
 }
