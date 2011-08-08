@@ -18,9 +18,11 @@ function init(c, userInterface) {
     client = c;
     storage = client.storage;
     ui = userInterface;
-    
-    
 
+    storage.getDoc('test', {}, function (doc) {
+        world = doc.blob.world;
+        player = doc.blob.player;
+    });
     makeWorld();
     newPlayer();
 }
@@ -67,7 +69,7 @@ function makeWorld() {
 
 //
 function updateWorld() {
-    
+
 }
 
 function newPlayer() {
@@ -91,44 +93,41 @@ function shoot() {
 }
 
 // award 10 bullets to player (5 %) award 100 bullets to player (.5%)
+// alter world[][] to change appropriate 'b' to 's'
 function breakBlock() {
 
+    updateWorld();
 }
 
 function move(dir) {
+    var needUpdate = false;
     switch (dir) {
     case 0:
         if (p.y > 0) {
             p.y--;
-            return true;
-        } else {
-            return false;
+            needUpdate = true;
         }
         break;
     case 1:
         if (p.x < 99) {
-            p.y--;
-            return true;
-        } else {
-            return false;
+            p.x++;
+            needUpdate = true;
         }
         break;
     case 2:
-        if (p.y > 0) {
-            p.y--;
-            return true;
-        } else {
-            return false;
+        if (p.y < 99) {
+            p.y++;
+            needUpdate = true;
         }
         break;
     case 3:
-        if (p.y > 0) {
-            p.y--;
-            return true;
-        } else {
-            return false;
+        if (p.x > 0) {
+            p.x--;
+            needUpdate = true;
         }
         break;
     }
-    return false;
+    if (needUpdate) {
+        updateWorld();
+    }
 }
