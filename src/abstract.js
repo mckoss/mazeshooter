@@ -216,25 +216,25 @@ function move(dir) {
     player.dir = dir;
     switch (dir) {
     case 0:
-        if (player.y > 0) {
+        if (player.y > 0 && getWorld(player.x, player.y - 1) == ' ') {
             player.y--;
             needUpdate = true;
         }
         break;
     case 1:
-        if (player.x < SIZE - 1) {
+        if (player.x < SIZE - 1 && getWorld(player.x + 1, player.y) == ' ') {
             player.x++;
             needUpdate = true;
         }
         break;
     case 2:
-        if (player.y < SIZE - 1) {
+        if (player.y < SIZE - 1 && getWorld(player.x, player.y + 1) == ' ') {
             player.y++;
             needUpdate = true;
         }
         break;
     case 3:
-        if (player.x > 0) {
+        if (player.x > 0 && getWorld(player.x - 1, player.y) == ' ') {
             player.x--;
             needUpdate = true;
         }
@@ -243,6 +243,6 @@ function move(dir) {
     if (needUpdate) {
         setWorld(x, y, ' ');
         setWorld(player.x, player.y, 'u');
-        updateWorld();
     }
+    updateWorld();
 }
