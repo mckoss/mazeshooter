@@ -9,6 +9,7 @@ exports.extend({
 })
 
 var world;  // array of strings
+var storedWorld;
 var player;
 var ui;
 var client;
@@ -96,6 +97,9 @@ function updateWorld() {
 
 function diffWorld() {
     var diffs = [];
+    if (!storedWorld) {
+        return diffs;
+    }
     for (var y = 0; y < SIZE; y++) {
         for (var x = 0; x < SIZE; x++) {
             if (storedWorld[y][x] != world[y][x]) {
@@ -187,7 +191,7 @@ function shoot() {
     console.log(player.bullets);
     console.log("bullet end:"+bulletx+","+bullety);
     console.log(world[bulletx,bullety]);
-    
+
 }
 
 // award 10 bullets to player (5 %) award 100 bullets to player (.5%)
