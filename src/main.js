@@ -65,31 +65,31 @@ function onKeyDown(e) {
     switch (e.keyCode)
     {
     case 37: //left
-        event.preventDefault();
+        e.preventDefault();
         ms.move(3);
         break;
     case 38: //up
-        event.preventDefault();
+        e.preventDefault();
         ms.move(0);
         break;
     case 39: //right
-        event.preventDefault();
+        e.preventDefault();
         ms.move(1);
         break;
     case 40: //down
-        event.preventDefault();
+        e.preventDefault();
         ms.move(2);
         break;
     case 32: //space - shoot
-        event.preventDefault();
+        e.preventDefault();
         ms.shoot();
         break;
     case 68: //d - shoot
-        event.preventDefault();
+        e.preventDefault();
         ms.shoot();
         break;
     case 70: //f - punch
-        event.preventDefault();
+        e.preventDefault();
         ms.punch();
     default:
     }
