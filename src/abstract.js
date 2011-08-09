@@ -10,7 +10,8 @@ exports.extend({
 
 var world;  // array of strings
 var storedWorld;
-var player;
+var signature;
+var player; // {x:, y:}
 var ui;
 var client;
 var storage;
@@ -82,6 +83,7 @@ function makeWorld() {
 }
 
 function updateWorld() {
+    signature = randomString(16);
     ui.onUpdate();
     var diffs = diffWorld();
     if (diffs.length > 0) {
@@ -103,7 +105,7 @@ function diffWorld() {
     for (var y = 0; y < SIZE; y++) {
         for (var x = 0; x < SIZE; x++) {
             if (storedWorld[y][x] != world[y][x]) {
-                diffs.push({ x: x, y: y, val: world[y][x] });
+                diffs.push({ x: x, y: y, val: world[y][x], sig: signature });
             }
         }
     }
@@ -115,11 +117,13 @@ function copyWorld(w) {
     for (var y = 0; y < SIZE; y++) {
         copy[y] = w[y];
     }
+    return copy;
 }
 
 function onRemoteUpdate(result) {
+    console.log("onRemoteUpdate");
     world = result.world;
-    storedWorld = result.world;
+    storedWorld = copyWorld(world);
     updateWorld();
 }
 
@@ -238,3 +242,15 @@ function move(dir) {
         updateWorld();
     }
 }
+
+var randChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' + 'abcdefghijklmnopqrstuvwxyz' +
+    '0123456789';
+
+function randomString(len) {
+    var radix = randChars.length;
+    var result = [];
+    for (var i = 0; i < len; i++) {
+        result[i] = randChars[0 | Math.random() * radix];
+    }
+    return result.join('');
+};

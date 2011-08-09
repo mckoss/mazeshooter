@@ -55,7 +55,6 @@ function handleAppCache() {
 }
 
 function onUpdate() {
-    console.log("onUpdate");
     drawWorld();
 }
 
