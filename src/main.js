@@ -60,8 +60,6 @@ function onUpdate() {
 }
 
 function onKeyDown(e) {
-    console.log("keydown");
-    console.log("this keycode:" + e.keyCode);
     switch (e.keyCode)
     {
     case 37: //left
