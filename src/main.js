@@ -60,6 +60,7 @@ function onUpdate() {
 }
 
 function onKeyDown(e) {
+    event.preventDefault();
     console.log("keydown");
     console.log("this keycode:" + e.keyCode);
     switch (e.keyCode)
