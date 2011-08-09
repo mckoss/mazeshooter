@@ -19,15 +19,19 @@ var WORLD_DOC = '_world';
 var WORLD_BLOB = 'world';
 var UPDATES_BLOB = 'updates';
 
+var useMulti = false;
+
 function init(c, userInterface) {
     client = c;
     storage = client.storage;
     ui = userInterface;
     
-    storage.subscribe(WORLD_DOC, WORLD_BLOB, undefined, onRemoteUpdate);
-    storage.getBlob(WORLD_DOC, WORLD_BLOB, undefined, function (result) {
-        onRemoteUpdate(result);
-    });
+    if (useMulti) {
+        storage.subscribe(WORLD_DOC, WORLD_BLOB, undefined, onRemoteUpdate);
+        storage.getBlob(WORLD_DOC, WORLD_BLOB, undefined, function (result) {
+            onRemoteUpdate(result);
+        });
+    }
 
     makeWorld();
     newPlayer();
@@ -78,7 +82,7 @@ function makeWorld() {
 
 function updateWorld() {
     ui.onUpdate();
-    var diffs = diffWorld(storedWorld, world);
+    var diffs = diffWorld();
     if (diffs.length > 0) {
         storage.push(WORLD_DOC, UPDATES_BLOB, diffs);
     }
@@ -90,12 +94,12 @@ function updateWorld() {
     }
 }
 
-function diffWorld(world1, world2) {
+function diffWorld() {
     var diffs = [];
     for (var y = 0; y < SIZE; y++) {
         for (var x = 0; x < SIZE; x++) {
-            if (world1[y][x] != world2[y][x]) {
-                diffs.push({ x: x, y: y, val: world2[y][x] });
+            if (storedWorld[y][x] != world[y][x]) {
+                diffs.push({ x: x, y: y, val: world[y][x] });
             }
         }
     }
