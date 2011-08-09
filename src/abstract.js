@@ -105,18 +105,48 @@ function shoot() {
     if(player.bullets > 0)
     {
         player.bullets--;
-        bulletx=player.x;
-        bullety=player.y;
+        bulletx = player.x;
+        bullety = player.y;
         switch(player.dir){
-            case 2:
-                while(world[bulletx][bullety] ==' ' && bulletx > 0 && bulletx <100 && bullety > 0 && bullety <100){
-                    bullety++;
-                    if(world[bulletx][bullety] == 'b'){
-                        breakBlock(bulletx,bullety);
-                        break;
-                    }
-                    
+        case 1:
+            bulletx++;
+            while (getWorld(bulletx, bullety) == ' ' && bulletx < SIZE) {
+                bulletx++;
+                if (getWorld(bulletx, bullety) == 'b') {
+                    breakBlock(bulletx, bullety);
+                    break;
                 }
+            }
+            break;
+        case 3:
+            bulletx--;
+            while (getWorld(bulletx, bullety) == ' ' && bulletx > 0) {
+                bulletx--;
+                if (getWorld(bulletx, bullety) == 'b') {
+                    breakBlock(bulletx,bullety);
+                    break;
+                }
+            }
+            break;
+        case 0:
+            bullety--;
+            while (getWorld(bulletx, bullety) == ' ' && bulletx > 0) {
+                bullety++;
+                if (getWorld(bulletx, bullety) == 'b') {
+                    breakBlock(bulletx, bullety);
+                    break;
+                }
+            }
+            break;
+        case 2:
+            bullety++;
+            while (getWorld(bulletx, bullety) == ' ' && bulletx < SIZE) {
+                bullety++;
+                if (getWorld(bulletx, bullety) == 'b') {
+                    breakBlock(bulletx, bullety);
+                    break;
+                }
+            }
             break;
 
         }
