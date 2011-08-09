@@ -94,6 +94,7 @@ function onKeyDown(e) {
 function drawWorld() {
     var tilesize = 24; 
     var canvas = document.getElementById('canvasWorld');
+    canvas.width = canvas.width;
     var ctx = canvas.getContext('2d');
     ctx.fillStyle = "rgb(255,255,255)";
     ctx.fillRect (0, 0, 360, 360);
@@ -104,9 +105,20 @@ function drawWorld() {
             var line = map[i];
             if (line.charAt(j) == "u") {
                 ctx.fillStyle = "rgb(0, 200, 0)";
-                ctx.fillRect (i * tilesize, j*tilesize,
+            } else if(line.charAt(j) == "w") {
+                ctx.fillStyle = "rgb(50, 0, 0)";
+            } else if (line.charAt(j) == "b") {
+                ctx.fillStyle = "rgb(0, 0, 200)";
+            } else {
+                ctx.fillStyle = "rgb(255, 255, 255)";
+            }
+        ctx.fillRect (i * tilesize, j*tilesize,
                      (i+1)*tilesize, (j+1)*tilesize);
-                //draw triangle indicating direction
+        
+        if(line.charAt(j) == "u" || 
+           line.charAt(j) == "r" || 
+           line.charAt(j) == "m"){
+        //draw triangle indicating direction
                 ctx.fillStyle = "rgb(0,0,0)";
                 switch(dir) {
                     case 0:
@@ -135,26 +147,11 @@ function drawWorld() {
                     break;
                     
                 }
-                ctx.fill();
-                
-                
-            } else if(line.charAt(j) == "w") {
-                ctx.fillStyle = "rgb(50, 0, 0)";
-                ctx.fillRect (i * tilesize, j*tilesize,
-                     (i+1)*tilesize, (j+1)*tilesize);
-            } else if (line.charAt(j) == "b") {
-                ctx.fillStyle = "rgb(0, 0, 200)";
-                ctx.fillRect (i * tilesize, j*tilesize,
-                     (i+1)*tilesize, (j+1)*tilesize);
-            } else {
-                ctx.fillStyle = "rgb(255, 255, 255)";
-                ctx.fillRect (i * tilesize, j*tilesize,
-                     (i+1)*tilesize, (j+1)*tilesize);
+                ctx.fill();    
             }
-            
         }
     }
-
+    console.log(map);
 
 
 

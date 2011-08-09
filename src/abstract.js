@@ -112,7 +112,7 @@ function move(dir) {
     var needUpdate = false;
     var x = player.x;
     var y = player.y;
-
+    player.dir = dir;
     switch (dir) {
     case 0:
         if (player.y > 0) {
