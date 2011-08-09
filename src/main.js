@@ -60,30 +60,36 @@ function onUpdate() {
 }
 
 function onKeyDown(e) {
-    event.preventDefault();
     console.log("keydown");
     console.log("this keycode:" + e.keyCode);
     switch (e.keyCode)
     {
     case 37: //left
+        event.preventDefault();
         ms.move(3);
         break;
     case 38: //up
+        event.preventDefault();
         ms.move(0);
         break;
     case 39: //right
+        event.preventDefault();
         ms.move(1);
         break;
     case 40: //down
+        event.preventDefault();
         ms.move(2);
         break;
     case 32: //space - shoot
+        event.preventDefault();
         ms.shoot();
         break;
     case 68: //d - shoot
+        event.preventDefault();
         ms.shoot();
         break;
     case 70: //f - punch
+        event.preventDefault();
         ms.punch();
     default:
     }
@@ -94,6 +100,7 @@ function onKeyDown(e) {
 function drawWorld() {
     var tilesize = 24; 
     var canvas = document.getElementById('canvasWorld');
+    canvas.width = canvas.width;
     var ctx = canvas.getContext('2d');
     ctx.fillStyle = "rgb(255,255,255)";
     ctx.fillRect (0, 0, 360, 360);
@@ -104,9 +111,20 @@ function drawWorld() {
             var line = map[i];
             if (line.charAt(j) == "u") {
                 ctx.fillStyle = "rgb(0, 200, 0)";
-                ctx.fillRect (i * tilesize, j*tilesize,
+            } else if(line.charAt(j) == "w") {
+                ctx.fillStyle = "rgb(50, 0, 0)";
+            } else if (line.charAt(j) == "b") {
+                ctx.fillStyle = "rgb(0, 0, 200)";
+            } else {
+                ctx.fillStyle = "rgb(255, 255, 255)";
+            }
+        ctx.fillRect (i * tilesize, j*tilesize,
                      (i+1)*tilesize, (j+1)*tilesize);
-                //draw triangle indicating direction
+        
+        if(line.charAt(j) == "u" || 
+           line.charAt(j) == "r" || 
+           line.charAt(j) == "m"){
+        //draw triangle indicating direction
                 ctx.fillStyle = "rgb(0,0,0)";
                 switch(dir) {
                     case 0:
@@ -135,26 +153,11 @@ function drawWorld() {
                     break;
                     
                 }
-                ctx.fill();
-                
-                
-            } else if(line.charAt(j) == "w") {
-                ctx.fillStyle = "rgb(50, 0, 0)";
-                ctx.fillRect (i * tilesize, j*tilesize,
-                     (i+1)*tilesize, (j+1)*tilesize);
-            } else if (line.charAt(j) == "b") {
-                ctx.fillStyle = "rgb(0, 0, 200)";
-                ctx.fillRect (i * tilesize, j*tilesize,
-                     (i+1)*tilesize, (j+1)*tilesize);
-            } else {
-                ctx.fillStyle = "rgb(255, 255, 255)";
-                ctx.fillRect (i * tilesize, j*tilesize,
-                     (i+1)*tilesize, (j+1)*tilesize);
+                ctx.fill();    
             }
-            
         }
     }
-
+    console.log(map);
 
 
 
