@@ -133,6 +133,8 @@ function shoot() {
         console.log("get user to buy bullets");
     }    
     console.log(player.bullets);
+    console.log("bullet end:"+bulletx+","+bullety);
+    console.log(world[bulletx,bullety]);
     
 }
 
