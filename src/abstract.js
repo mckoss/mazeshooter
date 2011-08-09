@@ -46,9 +46,9 @@ function getLocalRegion() {
     var arr = [];
     var x = player.x - 7;
     var y = player.y - 7;
-    for (var i = 0; i < 15; i++) {
-        arr[i] = '';
-        for (var j = 0; j < 15; j++) {
+    for (var j = 0; j < 15; j++) {
+        arr[j] = '';
+        for (var i = 0; i < 15; i++) {
             if (x + i < 0 || y + j < 0 || x + i > SIZE - 1 || y + j > SIZE - 1) {
                 arr[i] += 'w';
             } else {
@@ -62,9 +62,6 @@ function getLocalRegion() {
 // strings do not let you edit by index, must slice
 function setWorld(x, y, character) {
     world[y] = world[y].slice(0, x) + character + world.slice(x + 1);
-}
-function stringHelper(str, i, ch) {
-    return str.slice(0, i) + ch + str.slice(i + 1);
 }
 
 function makeWorld() {
