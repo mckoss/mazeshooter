@@ -37,7 +37,7 @@ function main() {
     ms.init(client, exports);
     drawWorld();
     $(window).bind('keydown', onKeyDown);
-    guy2.addEventListener('load', function () { drawWorld()});
+    guy1.addEventListener('load', function () { drawWorld()});
 }
 
 // For offline - capable applications

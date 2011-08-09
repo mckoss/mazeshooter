@@ -133,7 +133,7 @@ function newPlayer() {
     var p = {};
     p.x = 0;
     p.y = 0;
-    p.bullets = 1337;
+    p.bullets = 25;
     p.health = 1;
     p.dir = 1;
     player = p;
