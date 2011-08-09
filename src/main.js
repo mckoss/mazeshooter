@@ -101,7 +101,7 @@ var guy2 = new Image();
 guy2.src = 'images/guy2.png';
 var guy3 = new Image();
 guy3.src = 'images/guy3.png';
-guy0.addEventListener('load', function () { drawWorld()});
+//guy0.addEventListener('load', function () { drawWorld()});
 
 function drawWorld() {
     var tilesize = 24; 
