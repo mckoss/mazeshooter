@@ -1,10 +1,3 @@
-var world;
-var player;
-var ui;
-var client;
-var storage;
-var SIZE = 100;
-
 exports.extend({
     'init': init,
     'move': move,
@@ -21,19 +14,20 @@ var player;
 var ui;
 var client;
 var storage;
+var SIZE = 100;
 
 var WORLD_DOC = '_world';
 var WORLD_BLOB = 'world';
-var UPDATE_BLOB = 'updates';
+var UPDATES_BLOB = 'updates';
 
 function init(c, userInterface) {
     client = c;
     storage = client.storage;
     ui = userInterface;
     
-    storage.subscribe(WORLD_DOC, WORLD_BLOB, undefined, onWorldUpdate);
+    storage.subscribe(WORLD_DOC, WORLD_BLOB, undefined, onRemoteUpdate);
     storage.getBlob(WORLD_DOC, WORLD_BLOB, undefined, function (result) {
-        storedWorld = result;
+        storedWorld = result.world;
     });
 
     makeWorld();
@@ -86,12 +80,29 @@ function makeWorld() {
 
 function updateWorld() {
     ui.onUpdate();
-    console.log("Writing world with " + world.length + "lines");
-    storage.putBlob(WORLD_DOC, WORLD_BLOB, {world: world});
+    var diffs = diffWorld(storedWorld, world);
+    if (diffs.length > 0) {
+        storage.push(WORLD_DOC, UPDATES_BLOB, diffs);
+    }
+    if (diffs.length > 100) {
+        storage.putBlob(WORLD_DOC, WORLD_BLOB, {world: world});
+    }
 }
 
-function onWorldUpdate() {
-    console.log("onWorldUpdate");
+function diffWorld(world1, world2) {
+    var diffs = [];
+    for (var y = 0; y < SIZE; y++) {
+        for (var x = 0; x < SIZE; x++) {
+            if (world1[y][x] != world2[y][x]) {
+                diffs.push({ x: x, y: y, val: world2[y][x] });
+            }
+        }
+    }
+    return diffs;
+}
+
+function onRemoteUpdate() {
+    console.log("onRemoteUpdate");
 }
 
 function newPlayer() {
