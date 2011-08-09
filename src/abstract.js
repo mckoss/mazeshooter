@@ -67,9 +67,8 @@ function makeWorld() {
     world = w;
 }
 
-//
 function updateWorld() {
-
+    
 }
 
 function newPlayer() {
@@ -113,26 +112,26 @@ function move(dir) {
     var needUpdate = false;
     switch (dir) {
     case 0:
-        if (p.y > 0) {
-            p.y--;
+        if (player.y > 0) {
+            player.y--;
             needUpdate = true;
         }
         break;
     case 1:
-        if (p.x < 99) {
-            p.x++;
+        if (player.x < 99) {
+            player.x++;
             needUpdate = true;
         }
         break;
     case 2:
-        if (p.y < 99) {
-            p.y++;
+        if (player.y < 99) {
+            player.y++;
             needUpdate = true;
         }
         break;
     case 3:
-        if (p.x > 0) {
-            p.x--;
+        if (player.x > 0) {
+            player.x--;
             needUpdate = true;
         }
         break;
