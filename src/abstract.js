@@ -1,10 +1,3 @@
-var world;
-var player;
-var ui;
-var client;
-var storage;
-var SIZE = 100;
-
 exports.extend({
     'init': init,
     'move': move,
@@ -16,11 +9,11 @@ exports.extend({
 })
 
 var world;  // array of strings
-var storedWorld;
 var player;
 var ui;
 var client;
 var storage;
+var SIZE = 100;
 
 var WORLD_DOC = '_world';
 var WORLD_BLOB = 'world';
@@ -32,9 +25,6 @@ function init(c, userInterface) {
     ui = userInterface;
     
     storage.subscribe(WORLD_DOC, WORLD_BLOB, undefined, onWorldUpdate);
-    storage.getBlob(WORLD_DOC, WORLD_BLOB, undefined, function (result) {
-        storedWorld = result;
-    });
 
     makeWorld();
     newPlayer();
@@ -85,8 +75,10 @@ function makeWorld() {
 
 function updateWorld() {
     ui.onUpdate();
-    console.log("Writing world with " + world.length + "lines");
-    storage.putBlob(WORLD_DOC, WORLD_BLOB, {world: world});
+    storage.push(WORLD_DOC, WORLD_BLOB, {
+        username: client.username,
+        world: world
+        });
 }
 
 function onWorldUpdate() {
