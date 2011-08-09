@@ -114,11 +114,20 @@ function shoot() {
     if(player.bullets > 0)
     {
         player.bullets--;
+        bulletx=player.x;
+        bullety=player.y;
         switch(player.dir){
             case 2:
-                if(world[player.x][player.y+1] == 'b')
-                    breakBlock(player.x,player.y+1);
-                break;
+                while(world[bulletx][bullety] ==' ' && bulletx > 0 && bulletx <100 && bullety > 0 && bullety <100){
+                    bullety++;
+                    if(world[bulletx][bullety] == 'b'){
+                        breakBlock(bulletx,bullety);
+                        break;
+                    }
+                    
+                }
+            break;
+
         }
         
     }
@@ -127,6 +136,8 @@ function shoot() {
         console.log("get user to buy bullets");
     }    
     console.log(player.bullets);
+    console.log("bullet end:"+bulletx+","+bullety);
+    console.log(world[bulletx,bullety]);
     
 }
 
