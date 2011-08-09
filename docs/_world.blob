@@ -1,0 +1,21 @@
+{
+  "blob": {
+    "version": 1
+  },
+  "created": {
+    "__class__": "Date",
+    "isoformat": "2011-08-09T00:07:16.889299Z"
+  },
+  "docid": "_world",
+  "modified": {
+    "__class__": "Date",
+    "isoformat": "2011-08-09T00:23:22.928398Z"
+  },
+  "owner": "mckoss",
+  "readers": ["public"],
+  "sha1": "e3207ec88c39fd5c27d7b66f30c9ab59897993e1",
+  "size": 240,
+  "tags": [],
+  "title": "Maze Shooter World",
+  "writers": ["public"]
+}
