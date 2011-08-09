@@ -56,7 +56,7 @@ function handleAppCache() {
 
 function onUpdate() {
     console.log("onUpdate");
-
+    drawWorld();
 }
 
 function onKeyDown(e) {
@@ -93,7 +93,6 @@ function onKeyDown(e) {
         ms.punch();
     default:
     }
-    drawWorld();
 }
 
 
