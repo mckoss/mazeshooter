@@ -161,7 +161,7 @@ function shoot() {
         case 0:
             bullety--;
             while (getWorld(bulletx, bullety) == ' ' && bulletx > 0) {
-                bullety++;
+                bullety--;
                 if (getWorld(bulletx, bullety) == 'b') {
                     breakBlock(bulletx, bullety);
                     break;
