@@ -95,6 +95,15 @@ function onKeyDown(e) {
     }
 }
 
+var guy0 = new Image();
+guy0.src = 'images/guy0.png';
+var guy1 = new Image();
+guy1.src = 'images/guy1.png';
+var guy2 = new Image();
+guy2.src = 'images/guy2.png';
+var guy3 = new Image();
+guy3.src = 'images/guy3.png';
+
 
 function drawWorld() {
     var tilesize = 24; 
@@ -103,14 +112,7 @@ function drawWorld() {
     var ctx = canvas.getContext('2d');
     ctx.fillStyle = "rgb(255,255,255)";
     ctx.fillRect (0, 0, 360, 360);
-    var guy0 = new Image();
-    guy0.src = 'images/guy0.png';
-    var guy1 = new Image();
-    guy1.src = 'images/guy1.png';
-    var guy2 = new Image();
-    guy2.src = 'images/guy2.png';
-    var guy3 = new Image();
-    guy3.src = 'images/guy3.png';
+
     var dir = ms.getPlayerInfo().dir;
     var map = ms.getLocalRegion();
     for (var i = 0; i < 15; i++) {
@@ -152,9 +154,9 @@ function drawWorld() {
             }
         }
     }
-    console.log(map);
-
-    guy1.addEventListener('load', function () { drawWorld()});
+    //console.log(map);
+guy0.addEventListener('load', function () { drawWorld()});
+    
 
 }
 
