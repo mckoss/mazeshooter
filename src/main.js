@@ -101,6 +101,8 @@ var guy2 = new Image();
 guy2.src = 'images/guy2.png';
 var guy3 = new Image();
 guy3.src = 'images/guy3.png';
+var block = new Image();
+block.src = 'images/block.png';
 //guy0.addEventListener('load', function () { drawWorld()});
 
 function drawWorld() {
@@ -125,8 +127,12 @@ function drawWorld() {
             } else {
                 ctx.fillStyle = "rgb(255, 255, 255)";
             }
-        ctx.fillRect (j * tilesize, i*tilesize,
+            ctx.fillRect (j * tilesize, i*tilesize,
                      (j+1)*tilesize, (i+1)*tilesize);
+            
+            if (line.charAt(j) == "b") {
+                ctx.drawImage(block, i*tilesize, j*tilesize);
+            }
         
         if(line.charAt(j) == "u" || 
            line.charAt(j) == "r" || 
