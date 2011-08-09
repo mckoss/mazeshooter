@@ -114,9 +114,17 @@ function shoot() {
         player.bullets--;
         switch(player.dir){
             case 2:
-                if(world[player.x,player.y+1] == 'b')
-                    breakBlock(player.x,player.y+1);
-                break;
+                bulletx=player.x;
+                bullety=player.y;
+                while(world[bulletx,bullety] ==' '){
+                    bullety--;
+                    if(world[bulletx,bullety] == 'b'){
+                        breakBlock(bulletx,bullety);
+                        break;
+                    }
+                    
+                }
+            break;
         }
         
     }
