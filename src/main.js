@@ -104,6 +104,7 @@ guy3.src = 'images/guy3.png';
 //guy0.addEventListener('load', function () { drawWorld()});
 
 function drawWorld() {
+    $('#bulletCount').text('Bullets Remaining: ' + ms.getPlayerInfo().bullets);
     var tilesize = 24; 
     var canvas = document.getElementById('canvasWorld');
     canvas.width = canvas.width;
