@@ -118,8 +118,8 @@ function drawWorld() {
             } else {
                 ctx.fillStyle = "rgb(255, 255, 255)";
             }
-        ctx.fillRect (i * tilesize, j*tilesize,
-                     (i+1)*tilesize, (j+1)*tilesize);
+        ctx.fillRect (j * tilesize, i*tilesize,
+                     (j+1)*tilesize, (i+1)*tilesize);
         
         if(line.charAt(j) == "u" || 
            line.charAt(j) == "r" || 
