@@ -121,7 +121,7 @@ function newPlayer() {
     p.y = 0;
     p.bullets = 1337;
     p.health = 1;
-    p.dir = 2;
+    p.dir = 1;
     player = p;
 }
 
@@ -139,7 +139,6 @@ function shoot() {
         bullety = player.y;
         switch(player.dir){
         case 1:
-            bulletx++;
             while (getWorld(bulletx, bullety) == ' ' && bulletx < SIZE) {
                 bulletx++;
                 if (getWorld(bulletx, bullety) == 'b') {
@@ -149,7 +148,6 @@ function shoot() {
             }
             break;
         case 3:
-            bulletx--;
             while (getWorld(bulletx, bullety) == ' ' && bulletx > 0) {
                 bulletx--;
                 if (getWorld(bulletx, bullety) == 'b') {
@@ -159,7 +157,6 @@ function shoot() {
             }
             break;
         case 0:
-            bullety--;
             while (getWorld(bulletx, bullety) == ' ' && bulletx > 0) {
                 bullety--;
                 if (getWorld(bulletx, bullety) == 'b') {
@@ -169,7 +166,6 @@ function shoot() {
             }
             break;
         case 2:
-            bullety++;
             while (getWorld(bulletx, bullety) == ' ' && bulletx < SIZE) {
                 bullety++;
                 if (getWorld(bulletx, bullety) == 'b') {
@@ -178,9 +174,7 @@ function shoot() {
                 }
             }
             break;
-
         }
-        
     }
     else
     {
