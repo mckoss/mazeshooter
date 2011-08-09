@@ -85,19 +85,19 @@ function onKeyDown(e) {
     case 70: //f - punch
         ms.punch();
     default:
-    }        
+    }
+    drawWorld();
 }
 
 
-function drawWorld(worldArray) {
+function drawWorld() {
     var tilesize = 24; 
     var canvas = document.getElementById('canvasWorld');
     var ctx = canvas.getContext('2d');
     ctx.fillStyle = "rgb(255,255,255)";
     ctx.fillRect (0, 0, 360, 360);
-    var dir = 3;
+    var dir = ms.getPlayerInfo().dir;
     var map = ms.getLocalRegion();
-        console.log(map);
     for (var i = 0; i < 15; i++) {
         for(var j = 0; j < 15; j++) {
             var line = map[i];
