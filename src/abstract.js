@@ -27,7 +27,7 @@ function init(c, userInterface) {
     
     storage.subscribe(WORLD_DOC, WORLD_BLOB, undefined, onRemoteUpdate);
     storage.getBlob(WORLD_DOC, WORLD_BLOB, undefined, function (result) {
-        storedWorld = result.world;
+        onRemoteUpdate(result);
     });
 
     makeWorld();
@@ -85,7 +85,10 @@ function updateWorld() {
         storage.push(WORLD_DOC, UPDATES_BLOB, diffs);
     }
     if (diffs.length > 100) {
-        storage.putBlob(WORLD_DOC, WORLD_BLOB, {world: world});
+        var storing = copyWorld(world);
+        storage.putBlob(WORLD_DOC, WORLD_BLOB, {world: world}, undefined, function () {
+            storedWorld = storing;
+        });
     }
 }
 
@@ -101,8 +104,17 @@ function diffWorld(world1, world2) {
     return diffs;
 }
 
-function onRemoteUpdate() {
-    console.log("onRemoteUpdate");
+function copyWorld(w) {
+    var copy = [];
+    for (var y = 0; y < SIZE; y++) {
+        copy[y] = w[y];
+    }
+}
+
+function onRemoteUpdate(result) {
+    world = result.world;
+    storedWorld = result.world;
+    updateWorld();
 }
 
 function newPlayer() {
