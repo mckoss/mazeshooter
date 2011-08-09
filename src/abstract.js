@@ -50,9 +50,9 @@ function getLocalRegion() {
         arr[j] = '';
         for (var i = 0; i < 15; i++) {
             if (x + i < 0 || y + j < 0 || x + i > SIZE - 1 || y + j > SIZE - 1) {
-                arr[i] += 'w';
+                arr[j] += 'w';
             } else {
-                arr[i] += world[x + i][y + j];
+                arr[j] += getWorld(x + i, y + j);
             }
         }
     }
@@ -63,6 +63,9 @@ function getLocalRegion() {
 // strings do not let you edit by index, must slice
 function setWorld(x, y, character) {
     world[y] = world[y].slice(0, x) + character + world[y].slice(x + 1);
+}
+function getWorld(x, y) {
+    return world[y][x];
 }
 
 function makeWorld() {
