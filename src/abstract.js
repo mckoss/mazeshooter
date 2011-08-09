@@ -1,4 +1,3 @@
-
 var world;
 var player;
 var ui;
@@ -17,6 +16,7 @@ exports.extend({
 })
 
 var world;  // array of strings
+var storedWorld;
 var player;
 var ui;
 var client;
@@ -32,6 +32,9 @@ function init(c, userInterface) {
     ui = userInterface;
     
     storage.subscribe(WORLD_DOC, WORLD_BLOB, undefined, onWorldUpdate);
+    storage.getBlob(WORLD_DOC, WORLD_BLOB, undefined, function (result) {
+        storedWorld = result;
+    });
 
     makeWorld();
     newPlayer();
@@ -83,10 +86,8 @@ function makeWorld() {
 
 function updateWorld() {
     ui.onUpdate();
-    storage.push(WORLD_DOC, WORLD_BLOB, {
-        username: client.username,
-        world: world
-        });
+    console.log("Writing world with " + world.length + "lines");
+    storage.putBlob(WORLD_DOC, WORLD_BLOB, {world: world});
 }
 
 function onWorldUpdate() {
