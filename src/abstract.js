@@ -114,7 +114,7 @@ function shoot() {
         player.bullets--;
         switch(player.dir){
             case 2:
-                if(world[player.x,player.y+1 == 'b')
+                if(world[player.x,player.y+1] == 'b')
                     breakBlock(player.x,player.y+1);
                 break;
         }
