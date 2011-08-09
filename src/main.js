@@ -60,30 +60,36 @@ function onUpdate() {
 }
 
 function onKeyDown(e) {
-    event.preventDefault();
     console.log("keydown");
     console.log("this keycode:" + e.keyCode);
     switch (e.keyCode)
     {
     case 37: //left
+        event.preventDefault();
         ms.move(3);
         break;
     case 38: //up
+        event.preventDefault();
         ms.move(0);
         break;
     case 39: //right
+        event.preventDefault();
         ms.move(1);
         break;
     case 40: //down
+        event.preventDefault();
         ms.move(2);
         break;
     case 32: //space - shoot
+        event.preventDefault();
         ms.shoot();
         break;
     case 68: //d - shoot
+        event.preventDefault();
         ms.shoot();
         break;
     case 70: //f - punch
+        event.preventDefault();
         ms.punch();
     default:
     }
