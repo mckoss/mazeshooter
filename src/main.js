@@ -103,7 +103,7 @@ var guy2 = new Image();
 guy2.src = 'images/guy2.png';
 var guy3 = new Image();
 guy3.src = 'images/guy3.png';
-
+guy0.addEventListener('load', function () { drawWorld()});
 
 function drawWorld() {
     var tilesize = 24; 
@@ -134,7 +134,7 @@ function drawWorld() {
            line.charAt(j) == "r" || 
            line.charAt(j) == "m"){
         //draw triangle indicating direction
-                ctx.fillStyle = "rgb(0,0,0)";
+                //ctx.fillStyle = "rgb(0,0,0)";
                 switch(dir) {
                     case 0:
                     ctx.drawImage(guy0, i*tilesize, j*tilesize);
@@ -154,8 +154,8 @@ function drawWorld() {
             }
         }
     }
-    //console.log(map);
-guy0.addEventListener('load', function () { drawWorld()});
+    console.log(map);
+
     
 
 }
