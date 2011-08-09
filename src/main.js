@@ -37,6 +37,7 @@ function main() {
     ms.init(client, exports);
     drawWorld();
     $(window).bind('keydown', onKeyDown);
+    guy2.addEventListener('load', function () { drawWorld()});
 }
 
 // For offline - capable applications
@@ -101,9 +102,7 @@ var guy2 = new Image();
 guy2.src = 'images/guy2.png';
 var guy3 = new Image();
 guy3.src = 'images/guy3.png';
-var block = new Image();
-block.src = 'images/block.png';
-//guy0.addEventListener('load', function () { drawWorld()});
+
 
 function drawWorld() {
     var tilesize = 24; 
@@ -118,6 +117,7 @@ function drawWorld() {
     for (var i = 0; i < 15; i++) {
         for(var j = 0; j < 15; j++) {
             var line = map[i];
+
             if (line.charAt(j) == "u") {
                 ctx.fillStyle = "rgb(255, 255, 255)";
             } else if(line.charAt(j) == "w") {
@@ -130,9 +130,9 @@ function drawWorld() {
             ctx.fillRect (j * tilesize, i*tilesize,
                      (j+1)*tilesize, (i+1)*tilesize);
             
-            if (line.charAt(j) == "b") {
+            /*if (line.charAt(j) == "b") {
                 ctx.drawImage(block, i*tilesize, j*tilesize);
-            }
+            }*/
         
         if(line.charAt(j) == "u" || 
            line.charAt(j) == "r" || 
