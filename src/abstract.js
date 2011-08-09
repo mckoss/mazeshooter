@@ -10,6 +10,7 @@ exports.extend({
 
 var world;  // array of strings
 var storedWorld;
+var lastWorld;
 var signature;
 var player; // {x:, y:}
 var ui;
@@ -21,7 +22,7 @@ var WORLD_DOC = '_world';
 var WORLD_BLOB = 'world';
 var UPDATES_BLOB = 'updates';
 
-var useMulti = false;
+var useMulti = false;  // Set to true to enable multi-user support
 
 function init(c, userInterface) {
     client = c;
@@ -90,8 +91,11 @@ function makeWorld() {
 
 function updateWorld() {
     signature = randomString(16);
-    ui.onUpdate();
     var diffs = diffWorld();
+    lastWorld = copyWorld(world);
+
+    ui.onUpdate();
+
     if (diffs.length > 0) {
         storage.push(WORLD_DOC, UPDATES_BLOB, diffs);
     }
@@ -105,12 +109,12 @@ function updateWorld() {
 
 function diffWorld() {
     var diffs = [];
-    if (!storedWorld) {
+    if (!lastWorld) {
         return diffs;
     }
     for (var y = 0; y < SIZE; y++) {
         for (var x = 0; x < SIZE; x++) {
-            if (storedWorld[y][x] != world[y][x]) {
+            if (lastWorld[y][x] != world[y][x]) {
                 diffs.push({ x: x, y: y, val: world[y][x], sig: signature });
             }
         }
@@ -127,7 +131,6 @@ function copyWorld(w) {
 }
 
 function onRemoteUpdate(result) {
-    console.log("onRemoteUpdate");
     world = result.world;
     storedWorld = copyWorld(world);
     updateWorld();
@@ -150,7 +153,6 @@ function punch() {
 
 // check if player has bullets, update player.bullets, call breakBlock
 function shoot() {
-    console.log('shoot()  player.dir: ' + player.dir);
     if(player.bullets > 0)
     {
         player.bullets--;
@@ -199,16 +201,11 @@ function shoot() {
     {
         console.log("get user to buy bullets");
     }    
-    console.log(player.bullets);
-    console.log("bullet end:"+bulletx+","+bullety);
-    console.log(world[bulletx,bullety]);
-
 }
 
 // award 10 bullets to player (5 %) award 100 bullets to player (.5%)
 // alter world[][] to change appropriate 'b' to 's'
 function breakBlock(x, y) {
-    console.log('breakBlock x: ' + x + ' y: ' + y);
     setWorld(x, y, ' ');
     updateWorld();
 }
