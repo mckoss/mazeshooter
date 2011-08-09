@@ -152,6 +152,7 @@ function drawWorld() {
             }
         }
     }
+    console.log(map);
 }
 
 

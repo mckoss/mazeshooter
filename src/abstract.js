@@ -62,10 +62,16 @@ function getLocalRegion() {
 
 // strings do not let you edit by index, must slice
 function setWorld(x, y, character) {
-    world[y] = world[y].slice(0, x) + character + world[y].slice(x + 1);
+    if (x >= 0 && x < SIZE && y >= 0 && y < SIZE) {
+        world[y] = world[y].slice(0, x) + character + world[y].slice(x + 1);
+    }
 }
 function getWorld(x, y) {
-    return world[y][x];
+    if (x >= 0 && x < SIZE && y >= 0 && y < SIZE) {
+        return world[y][x];
+    } else {
+        return false;
+    }
 }
 
 function makeWorld() {
@@ -140,8 +146,7 @@ function punch() {
 
 // check if player has bullets, update player.bullets, call breakBlock
 function shoot() {
-    console.log('shoot');
-    console.log('player.dir: ' + player.dir);
+    console.log('shoot()  player.dir: ' + player.dir);
     if(player.bullets > 0)
     {
         player.bullets--;
@@ -149,39 +154,39 @@ function shoot() {
         bullety = player.y;
         switch(player.dir){
         case 1:  // right
+            bulletx++;
             while (getWorld(bulletx, bullety) == ' ' && bulletx < SIZE) {
                 bulletx++;
-                if (getWorld(bulletx, bullety) == 'b') {
-                    breakBlock(bulletx, bullety);
-                    break;
-                }
+            }
+            if (getWorld(bulletx, bullety) == 'b') {
+                breakBlock(bulletx, bullety);
             }
             break;
         case 3:  // left
+            bulletx--;
             while (getWorld(bulletx, bullety) == ' ' && bulletx > 0) {
                 bulletx--;
-                if (getWorld(bulletx, bullety) == 'b') {
-                    breakBlock(bulletx,bullety);
-                    break;
-                }
+            }
+            if (getWorld(bulletx, bullety) == 'b') {
+                breakBlock(bulletx,bullety);
             }
             break;
         case 0:  // up
+            bullety--;
             while (getWorld(bulletx, bullety) == ' ' && bullety > 0) {
                 bullety--;
-                if (getWorld(bulletx, bullety) == 'b') {
-                    breakBlock(bulletx, bullety);
-                    break;
-                }
+            }
+            if (getWorld(bulletx, bullety) == 'b') {
+                breakBlock(bulletx, bullety);
             }
             break;
         case 2:  // down
+            bullety++;
             while (getWorld(bulletx, bullety) == ' ' && bullety < SIZE) {
                 bullety++;
-                if (getWorld(bulletx, bullety) == 'b') {
-                    breakBlock(bulletx, bullety);
-                    break;
-                }
+            }
+            if (getWorld(bulletx, bullety) == 'b') {
+                breakBlock(bulletx, bullety);
             }
             break;
         }
@@ -199,6 +204,7 @@ function shoot() {
 // award 10 bullets to player (5 %) award 100 bullets to player (.5%)
 // alter world[][] to change appropriate 'b' to 's'
 function breakBlock(x, y) {
+    console.log('breakBlock x: ' + x + ' y: ' + y);
     setWorld(x, y, ' ');
     updateWorld();
 }
