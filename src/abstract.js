@@ -75,7 +75,7 @@ function newPlayer() {
     var p = {};
     p.x = 0;
     p.y = 0;
-    p.bullets = 0;
+    p.bullets = 1000000;
     p.health = 1;
     p.dir = 2;
     player = p;
@@ -110,6 +110,9 @@ function breakBlock() {
 
 function move(dir) {
     var needUpdate = false;
+    var x = player.x;
+    var y = player.y;
+
     switch (dir) {
     case 0:
         if (player.y > 0) {
@@ -137,6 +140,8 @@ function move(dir) {
         break;
     }
     if (needUpdate) {
+        world[x][y] = 's';
+        world[player.x][player.y] = 'u';
         updateWorld();
     }
 }
