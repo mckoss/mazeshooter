@@ -56,7 +56,6 @@ function getLocalRegion() {
             }
         }
     }
-    console.log(arr);
     return arr;
 }
 
