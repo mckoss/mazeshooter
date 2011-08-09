@@ -104,13 +104,21 @@ function drawWorld() {
     var ctx = canvas.getContext('2d');
     ctx.fillStyle = "rgb(255,255,255)";
     ctx.fillRect (0, 0, 360, 360);
+    var guy0 = new Image();
+    guy0.src = 'images/guy0.png';
+    var guy1 = new Image();
+    guy1.src = 'images/guy1.png';
+    var guy2 = new Image();
+    guy2.src = 'images/guy2.png';
+    var guy3 = new Image();
+    guy3.src = 'images/guy3.png';
     var dir = ms.getPlayerInfo().dir;
     var map = ms.getLocalRegion();
     for (var i = 0; i < 15; i++) {
         for(var j = 0; j < 15; j++) {
             var line = map[i];
             if (line.charAt(j) == "u") {
-                ctx.fillStyle = "rgb(0, 200, 0)";
+                ctx.fillStyle = "rgb(255, 255, 255)";
             } else if(line.charAt(j) == "w") {
                 ctx.fillStyle = "rgb(50, 0, 0)";
             } else if (line.charAt(j) == "b") {
@@ -128,28 +136,16 @@ function drawWorld() {
                 ctx.fillStyle = "rgb(0,0,0)";
                 switch(dir) {
                     case 0:
-                    ctx.moveTo(i*tilesize + 2, j*tilesize + 22);
-                    ctx.lineTo(i*tilesize + 22, j*tilesize + 22);
-                    ctx.lineTo(i*tilesize + 12, j*tilesize + 2);
-                    ctx.lineTo(i*tilesize + 2, j*tilesize + 22);
+                    ctx.drawImage(guy0, i*tilesize, j*tilesize);
                     break;
                     case 1:
-                    ctx.moveTo(i*tilesize + 2, j*tilesize + 2);
-                    ctx.lineTo(i*tilesize + 22, j*tilesize + 12);
-                    ctx.lineTo(i*tilesize + 2, j*tilesize + 22);
-                    ctx.lineTo(i*tilesize + 2, j*tilesize + 2);
+                    ctx.drawImage(guy1, i*tilesize, j*tilesize);
                     break;
                     case 2:
-                    ctx.moveTo(i*tilesize + 2, j*tilesize + 2);
-                    ctx.lineTo(i*tilesize + 22, j*tilesize + 2);
-                    ctx.lineTo(i*tilesize + 12, j*tilesize + 22);
-                    ctx.lineTo(i*tilesize + 2, j*tilesize + 2);
+                    ctx.drawImage(guy2, i*tilesize, j*tilesize);
                     break;
                     case 3:
-                    ctx.moveTo(i*tilesize + 22, j*tilesize + 2);
-                    ctx.lineTo(i*tilesize + 22, j*tilesize + 22);
-                    ctx.lineTo(i*tilesize + 2, j*tilesize + 12);
-                    ctx.lineTo(i*tilesize + 22, j*tilesize + 2);
+                    ctx.drawImage(guy3, i*tilesize, j*tilesize);
                     break;
                     
                 }
@@ -159,7 +155,7 @@ function drawWorld() {
     }
     console.log(map);
 
-
+    guy1.addEventListener('load', function () { drawWorld()});
 
 }
 
