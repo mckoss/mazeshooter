@@ -112,13 +112,13 @@ function shoot() {
     if(player.bullets > 0)
     {
         player.bullets--;
+        bulletx=player.x;
+        bullety=player.y;
         switch(player.dir){
             case 2:
-                bulletx=player.x;
-                bullety=player.y;
-                while(world[bulletx,bullety] ==' '){
-                    bullety--;
-                    if(world[bulletx,bullety] == 'b'){
+                while(world[bulletx][bullety] ==' ' && bulletx > 0 && bulletx <100 && bullety > 0 && bullety <100){
+                    bullety++;
+                    if(world[bulletx][bullety] == 'b'){
                         breakBlock(bulletx,bullety);
                         break;
                     }
