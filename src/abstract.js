@@ -89,7 +89,17 @@ function punch() {
 
 // check if player has bullets, update player.bullets, call breakBlock
 function shoot() {
-
+    if(player.bullets >0)
+    {
+        player.bullets--;
+        
+    }
+    else
+    {
+        console.log("get user to buy bullets");
+    }    
+    console.log(player.bullets);
+    
 }
 
 // award 10 bullets to player (5 %) award 100 bullets to player (.5%)
