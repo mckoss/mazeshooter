@@ -62,7 +62,7 @@ function getLocalRegion() {
 
 // strings do not let you edit by index, must slice
 function setWorld(x, y, character) {
-    world[y] = world[y].slice(0, x) + character + world.slice(x + 1);
+    world[y] = world[y].slice(0, x) + character + world[y].slice(x + 1);
 }
 
 function makeWorld() {
@@ -112,7 +112,7 @@ function shoot() {
         player.bullets--;
         switch(player.dir){
             case 2:
-                if(world[player.x,player.y+1] == 'b')
+                if(world[player.x][player.y+1] == 'b')
                     breakBlock(player.x,player.y+1);
                 break;
         }
