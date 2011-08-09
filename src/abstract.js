@@ -1,3 +1,4 @@
+
 var world;
 var player;
 var ui;
@@ -15,15 +16,23 @@ exports.extend({
     'punch': punch
 })
 
+var world;  // array of strings
+var player;
+var ui;
+var client;
+var storage;
+
+var WORLD_DOC = '_world';
+var WORLD_BLOB = 'world';
+var UPDATE_BLOB = 'updates';
+
 function init(c, userInterface) {
     client = c;
     storage = client.storage;
     ui = userInterface;
+    
+    storage.subscribe(WORLD_DOC, WORLD_BLOB, undefined, onWorldUpdate);
 
-    storage.getDoc('test', {}, function (doc) {
-        world = doc.blob.world;
-        player = doc.blob.player;
-    });
     makeWorld();
     newPlayer();
 }
@@ -72,7 +81,15 @@ function makeWorld() {
 }
 
 function updateWorld() {
-    
+    ui.onUpdate();
+    storage.push(WORLD_DOC, WORLD_BLOB, {
+        username: client.username,
+        world: world
+        });
+}
+
+function onWorldUpdate() {
+    console.log("onWorldUpdate");
 }
 
 function newPlayer() {
