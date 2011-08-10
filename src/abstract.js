@@ -6,7 +6,7 @@ exports.extend({
     'getLocalRegion': getLocalRegion,
     'shoot': shoot,
     'punch': punch
-})
+});
 
 var world;  // array of strings
 var storedWorld;
@@ -28,7 +28,7 @@ function init(c, userInterface) {
     client = c;
     storage = client.storage;
     ui = userInterface;
-    
+
     if (useMulti) {
         storage.subscribe(WORLD_DOC, WORLD_BLOB, undefined, onRemoteUpdate);
         storage.getBlob(WORLD_DOC, WORLD_BLOB, undefined, function (result) {
@@ -44,7 +44,7 @@ function getPlayerInfo() {
     return player;
 }
 
-// returns 15x15 array 
+// returns 15x15 array
 function getLocalRegion() {
     var arr = [];
     var x = player.x - 7;
@@ -148,17 +148,17 @@ function newPlayer() {
 
 // if block in front of player call break block
 function punch() {
-    
+
 }
 
 // check if player has bullets, update player.bullets, call breakBlock
 function shoot() {
-    if(player.bullets > 0)
+    if (player.bullets > 0)
     {
         player.bullets--;
         bulletx = player.x;
         bullety = player.y;
-        switch(player.dir){
+        switch (player.dir) {
         case 1:  // right
             bulletx++;
             while (getWorld(bulletx, bullety) == ' ' && bulletx < SIZE) {
@@ -174,7 +174,7 @@ function shoot() {
                 bulletx--;
             }
             if (getWorld(bulletx, bullety) == 'b') {
-                breakBlock(bulletx,bullety);
+                breakBlock(bulletx, bullety);
             }
             break;
         case 0:  // up
@@ -200,7 +200,7 @@ function shoot() {
     else
     {
         console.log("get user to buy bullets");
-    }    
+    }
 }
 
 // award 10 bullets to player (5 %) award 100 bullets to player (.5%)
@@ -258,4 +258,4 @@ function randomString(len) {
         result[i] = randChars[0 | Math.random() * radix];
     }
     return result.join('');
-};
+}
